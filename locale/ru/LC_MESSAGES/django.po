@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-18 09:55+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: CONFIG/settings.py:107
+msgid "English"
+msgstr ""
+
+#: CONFIG/settings.py:108
+msgid "Uzbek"
+msgstr ""
+
+#: CONFIG/settings.py:109
+msgid "Russian"
+msgstr ""
+
+#: main_app/models.py:7 main_app/models.py:14
+msgid "Name"
+msgstr ""
+
+#: main_app/models.py:21
+msgid "Image"
+msgstr ""
+
+#: main_app/models.py:22
+msgid "Company"
+msgstr ""
+
+#: main_app/models.py:23
+msgid "Category"
+msgstr ""
+
+#: main_app/models.py:24
+msgid "Title"
+msgstr ""
+
+#: main_app/models.py:25
+msgid "Published Date"
+msgstr ""
+
+#: main_app/models.py:26 main_app/models.py:58
+msgid "Description"
+msgstr ""
+
+#: main_app/models.py:27
+msgid "Full Description"
+msgstr ""
+
+#: main_app/models.py:28
+msgid "Apply URL"
+msgstr ""
+
+#: main_app/models.py:29 main_app/models.py:41
+msgid "Created At"
+msgstr ""
+
+#: main_app/models.py:36 main_app/serializers.py:55 users/models.py:15
+msgid "First Name"
+msgstr ""
+
+#: main_app/models.py:37 main_app/serializers.py:56 users/models.py:16
+msgid "Last Name"
+msgstr ""
+
+#: main_app/models.py:38 users/models.py:18
+msgid "Email"
+msgstr ""
+
+#: main_app/models.py:39 main_app/serializers.py:58 users/models.py:17
+msgid "Phone Number"
+msgstr ""
+
+#: main_app/models.py:40
+msgid "Message"
+msgstr ""
+
+#: main_app/models.py:49
+msgid "Pending"
+msgstr ""
+
+#: main_app/models.py:50
+msgid "Approved"
+msgstr ""
+
+#: main_app/models.py:51
+msgid "Rejected"
+msgstr ""
+
+#: main_app/models.py:54 users/models.py:13
+msgid "User"
+msgstr ""
+
+#: main_app/models.py:55
+msgid "Internship"
+msgstr ""
+
+#: main_app/models.py:56
+msgid "File"
+msgstr ""
+
+#: main_app/models.py:57
+msgid "Additional Titles"
+msgstr ""
+
+#: main_app/models.py:59
+msgid "Status"
+msgstr ""
+
+#: main_app/models.py:60
+msgid "Applied At"
+msgstr ""
+
+#: main_app/serializers.py:11
+msgid "Category Name"
+msgstr ""
+
+#: main_app/serializers.py:20
+msgid "Company Name"
+msgstr ""
+
+#: main_app/serializers.py:43
+msgid "Internship Title"
+msgstr ""
+
+#: main_app/serializers.py:44
+msgid "Short Description"
+msgstr ""
+
+#: main_app/serializers.py:45
+msgid "Detailed Description"
+msgstr ""
+
+#: main_app/serializers.py:46
+msgid "Application Link"
+msgstr ""
+
+#: main_app/serializers.py:57 users/models.py:32
+msgid "Email Address"
+msgstr ""
+
+#: main_app/serializers.py:59
+msgid "Message Content"
+msgstr ""
+
+#: main_app/serializers.py:69
+msgid "Uploaded File"
+msgstr ""
+
+#: main_app/serializers.py:70
+msgid "Application Description"
+msgstr ""
+
+#: main_app/serializers.py:71
+msgid "Application Status"
+msgstr ""
+
+#: users/models.py:20
+msgid "Profile Picture"
+msgstr ""
+
+#: users/models.py:27
+msgid "User Profile"
+msgstr ""
+
+#: users/models.py:28
+msgid "User Profiles"
+msgstr ""
+
+#: users/models.py:39
+msgid "Groups"
+msgstr ""
+
+#: users/models.py:45
+msgid "User Permissions"
+msgstr ""
+
+#: users/models.py:52
+msgid "Custom User"
+msgstr ""
+
+#: users/models.py:53
+msgid "Custom Users"
+msgstr ""
+
+#: users/serializers.py:28
+msgid "password"
+msgstr ""
+
+#: users/serializers.py:28
+msgid "Passwords must match"
+msgstr ""
+
+#: users/serializers.py:64
+msgid "confirm_password"
+msgstr ""
+
+#: users/serializers.py:64
+msgid "New password and confirm password do not match."
+msgstr ""
+
+#: users/serializers.py:69
+msgid "old_password"
+msgstr ""
+
+#: users/serializers.py:69
+msgid "Old password is incorrect."
+msgstr ""
+
+#: users/serializers.py:75
+msgid "new_password"
+msgstr ""
