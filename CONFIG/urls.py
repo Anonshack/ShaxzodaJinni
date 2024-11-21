@@ -4,6 +4,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 from CONFIG import settings
 
@@ -21,10 +22,12 @@ schema_view = get_schema_view(
 )
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('api/', include('main_app.urls')),
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
 
    # swagger api
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
@@ -33,4 +36,4 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-^==c#-5m3q-73q)!mozxo+z%5a46#*7n)*i=koy8#7pmhpi2c*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['Shaxzoda2.pythonanywhere.com']
 
 
 # Application definition
@@ -81,7 +81,7 @@ ROOT_URLCONF = 'CONFIG.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -154,17 +154,27 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+SWAGGER_SETTINGS = {
+    'LOGIN_REQUIRED': False,
+}
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+# STATIC_ROOT (required for production)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = '/accounts/login/'
