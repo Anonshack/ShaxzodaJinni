@@ -12,18 +12,47 @@ from .serializers import (
     UserProfileSerializer, ChangePasswordSerializer
 )
 from django.contrib.auth.models import User
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 class RegisterAPIView(APIView):
+    """
+    User registration endpoint.
+    """
+
+    @swagger_auto_schema(
+        operation_description="Register a new user.",
+        request_body=RegisterSerializer,
+        responses={
+            201: openapi.Response("User created successfully"),
+            400: "Bad Request"
+        },
+        tags=["User Registration"]
+    )
     def post(self, request, *args, **kwargs):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
-            user = serializer.save()  # Profile will be auto-created via signal
+            user = serializer.save()
             return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LoginAPIView(APIView):
+    """
+    User login endpoint.
+    """
+
+    @swagger_auto_schema(
+        operation_description="Log in a user and get tokens.",
+        request_body=LoginSerializer,
+        responses={
+            200: openapi.Response("Tokens returned successfully"),
+            401: "Invalid credentials",
+            400: "Bad Request"
+        },
+        tags=["User Login"]
+    )
     def post(self, request, *args, **kwargs):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
@@ -45,9 +74,17 @@ class LoginAPIView(APIView):
 
 
 class UserListView(ListAPIView):
+    """
+    List all users.
+    """
     queryset = User.objects.all()
     serializer_class = UserListSerializer
 
+    @swagger_auto_schema(
+        operation_description="Retrieve a list of all users.",
+        responses={200: UserListSerializer(many=True)},
+        tags=["User Management"]
+    )
     def get(self, request, *args, **kwargs):
         users = self.get_queryset()
         serializer = self.get_serializer(users, many=True)
@@ -59,14 +96,31 @@ class UserListView(ListAPIView):
 
 
 class UserCountView(APIView):
+    """
+    Retrieve total user count.
+    """
+
+    @swagger_auto_schema(
+        operation_description="Retrieve total user count.",
+        responses={200: openapi.Response("Count returned successfully")},
+        tags=["User Management"]
+    )
     def get(self, request, *args, **kwargs):
         user_count = User.objects.count()
         return Response({'user_count': user_count}, status=status.HTTP_200_OK)
 
 
 class UserProfileView(APIView):
+    """
+    User profile management.
+    """
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(
+        operation_description="Retrieve logged-in user's profile information.",
+        responses={200: UserProfileSerializer()},
+        tags=["User Profile"]
+    )
     def get(self, request):
         user = request.user
         if user.is_authenticated:
@@ -80,6 +134,12 @@ class UserProfileView(APIView):
             return Response(profile_data, status=status.HTTP_200_OK)
         return Response({"error": "User not authenticated."}, status=status.HTTP_401_UNAUTHORIZED)
 
+    @swagger_auto_schema(
+        operation_description="Update logged-in user's profile.",
+        request_body=UserProfileSerializer,
+        responses={200: UserProfileSerializer()},
+        tags=["User Profile"]
+    )
     def put(self, request):
         try:
             profile = UserProfile.objects.get(user=request.user)
@@ -92,6 +152,11 @@ class UserProfileView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @swagger_auto_schema(
+        operation_description="Delete logged-in user's profile picture.",
+        responses={200: "Profile picture deleted successfully."},
+        tags=["User Profile"]
+    )
     def delete(self, request):
         try:
             profile = UserProfile.objects.get(user=request.user)
@@ -106,8 +171,22 @@ class UserProfileView(APIView):
 
 
 class LogoutView(APIView):
+    """
+    User logout endpoint.
+    """
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(
+        operation_description="Log out a user by blacklisting their refresh token.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'refresh_token': openapi.Schema(type=openapi.TYPE_STRING, description='Refresh token to blacklist')
+            }
+        ),
+        responses={200: "Logout successful.", 400: "Bad Request"},
+        tags=["User Logout"]
+    )
     def post(self, request):
         refresh_token = request.data.get("refresh_token")
         if not refresh_token:
@@ -122,8 +201,17 @@ class LogoutView(APIView):
 
 
 class ChangePasswordView(APIView):
+    """
+    User password change endpoint.
+    """
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(
+        operation_description="Change the logged-in user's password.",
+        request_body=ChangePasswordSerializer,
+        responses={200: "Password changed successfully!", 400: "Bad Request"},
+        tags=["User Profile"]
+    )
     def post(self, request):
         serializer = ChangePasswordSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
