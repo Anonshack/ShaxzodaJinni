@@ -1,2 +1,5 @@
-# Qudratbek
-# Telegram: @geodev_at
+<<<<<<< HEAD
+Your local changes here.
+=======
+Changes from the remote here.
+>>>>>>> d182bcc
